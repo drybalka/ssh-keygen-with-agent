@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+while getopts :f: opt; do case $opt in
+  f) ssh-add -T "$OPTARG" 2>&- || ssh-add "$OPTARG" ;;
+  *) ;;
+  esac done
+
+exec ssh-keygen "$@"
